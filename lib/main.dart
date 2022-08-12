@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ex-Trac',
+      theme: ThemeData(primarySwatch: Colors.pink, accentColor: Colors.indigo),
       home: MyHomePage(),
     );
   }
@@ -66,7 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ex-Trac'),
-        backgroundColor: Colors.green,
         actions: [
           IconButton(
             icon: Icon(Icons.add),
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.redAccent,
+                color: Colors.indigo,
                 child: Text('CHART!'),
                 elevation: 10,
               ),
