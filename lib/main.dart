@@ -11,7 +11,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ex-Trac',
-      theme: ThemeData(primarySwatch: Colors.pink, accentColor: Colors.indigo),
+      theme: ThemeData(
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.pink,
+        ).copyWith(
+          secondary: Colors.indigo,
+        ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }
