@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
+              button: TextStyle(color: Colors.white),
             ),
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.pink,
