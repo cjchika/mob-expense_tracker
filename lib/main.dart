@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './widgets/transaction.list.dart';
 import './widgets/new_transaction.dart';
+import './widgets/chart.dart';
 import './models/transaction.dart';
 
 void main() => runApp(MyApp());
@@ -47,19 +48,27 @@ class _MyHomePageState extends State<MyHomePage> {
   // String titleInput;
 
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't0',
-      title: 'New Book',
-      amount: 50.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Shoe',
-      amount: 80.99,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't0',
+    //   title: 'New Book',
+    //   amount: 50.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Shoe',
+    //   amount: 80.99,
+    //   date: DateTime.now(),
+    // ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((trx) {
+      return trx.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
 
   void _addNewTransaction(String trxTitle, double trxAmount) {
     final newTrx = Transaction(
@@ -100,20 +109,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.indigo,
-                child: Text('CHART!'),
-                elevation: 10,
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_userTransactions),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.indigo,
         child: Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
       ),
